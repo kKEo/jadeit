@@ -1,4 +1,4 @@
-package org.maziarz;
+package org.maziarz.jadeit;
 
 import org.apache.wicket.util.time.Duration;
 import org.eclipse.jetty.http.ssl.SslContextFactory;
