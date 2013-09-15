@@ -11,7 +11,7 @@ import org.maziarz.jadeit.model.Ticket.Priority;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
-@ContextConfiguration(locations = {"classpath:/spring/applicationContext.xml"})
+@ContextConfiguration(locations = {"classpath:/spring/applicationContextEntityManager.xml"})
 public class TicketDaoTest extends AbstractTransactionalJUnit4SpringContextTests{
 
 	@Resource

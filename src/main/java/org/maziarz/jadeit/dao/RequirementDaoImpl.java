@@ -5,7 +5,7 @@ import org.maziarz.jadeit.model.Requirement;
 public class RequirementDaoImpl extends BaseDaoImpl<Requirement> implements RequirementDao {
 
 	@Override
-	protected Class<?> getBaseClass() {
+	protected Class<Requirement> getBaseClass() {
 		return Requirement.class;
 	}
 

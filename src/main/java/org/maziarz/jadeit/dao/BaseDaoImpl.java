@@ -2,71 +2,77 @@ package org.maziarz.jadeit.dao;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 
  * Abstract implementation of basic operation available for each DOA object
- * 
- * @author kkeo
  *
  * @param <T>
  */
 public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
-	@Resource
-	SessionFactory sessionFactory;
+	protected EntityManager em;
+	
+	public EntityManager getEntityManager() {
+		return em;
+	}
+	
+	@PersistenceContext
+	public void setEntityManager(EntityManager em) {
+		this.em = em;
+	}
+	
+	@PersistenceUnit
+	protected EntityManagerFactory emf;
 	
 	@Transactional
 	public void save(T t) {
-		sessionFactory.getCurrentSession().save(t);
+		em.persist(t);
 	}
 	
 	@Transactional
 	public void delete(T t) {
-		sessionFactory.getCurrentSession().delete(t);
+		em.remove(t);
 	}
 	
 	@Transactional
 	public void update(T t) {
-		sessionFactory.getCurrentSession().merge(t);
+		em.merge(t);
 	}
 
-	abstract protected  Class<?> getBaseClass(); 
+	abstract protected  Class<T> getBaseClass(); 
 	
 	@Transactional(readOnly = true)
 	@Override
-	public int count() {
-		return (Integer) sessionFactory.getCurrentSession() //
-				.createCriteria(getBaseClass()) //
-				.setProjection(Projections.rowCount()) //
-				.uniqueResult();
+	public long count() {
+		CriteriaBuilder builder = emf.getCriteriaBuilder();
+		CriteriaQuery<Long> criteria =  builder.createQuery(Long.class);
+		criteria.select(builder.count(criteria.from(getBaseClass())));
+		return em.createQuery(criteria).getSingleResult();
 	}
 	
-	@SuppressWarnings("unchecked") /* as list() method */
 	@Transactional(readOnly = true)
 	@Override
 	public List<T> list(int offset, int limit) {
-		return (List<T>) sessionFactory.getCurrentSession() //
-				.createCriteria(getBaseClass())  // fetch criteria object
-				.setFirstResult(offset) // set offset
-				.setMaxResults(limit) // apply limit
-				.list();
+		CriteriaBuilder builder = emf.getCriteriaBuilder();
+		CriteriaQuery<T> criteria =  builder.createQuery(getBaseClass());
+		
+		List<T> resultList = em.createQuery(criteria).setFirstResult(offset).setMaxResults(limit).getResultList();
+		return resultList;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	@Override
 	public T load(Long id) {
-		return (T) sessionFactory.getCurrentSession()
-				.createCriteria(getBaseClass()) // fetch criteria object
-				.add(Restrictions.eq("id", id)) // 
-				.uniqueResult();
+		return (T) em.find(getBaseClass(), id);
 	}
 
 
