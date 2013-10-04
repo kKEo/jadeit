@@ -12,17 +12,17 @@ public class HomePage extends WebPage {
 
 	@SpringBean
 	TicketDao ticketDao;
-	
-    public HomePage(final PageParameters parameters) {
+
+	public HomePage(final PageParameters parameters) {
 		add(new Label("version", getApplication().getFrameworkSettings().getVersion()));
-        
+
 		Ticket ticket = new Ticket("test", "test desc", Ticket.Priority.NORMAL);
 		ticketDao.save(ticket);
-		
+
 		String title = "Undefined";
-		title = ticketDao.loadByTitle("test").getTitle();
-		
+		title = ticketDao.loadByTitle("test").getName();
+
 		add(new Label("ticket", title));
-		
-    }
+
+	}
 }

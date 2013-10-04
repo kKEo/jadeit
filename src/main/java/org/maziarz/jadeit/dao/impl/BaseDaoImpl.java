@@ -1,4 +1,4 @@
-package org.maziarz.jadeit.dao;
+package org.maziarz.jadeit.dao.impl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
+import org.maziarz.jadeit.dao.BaseDao;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

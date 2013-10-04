@@ -24,7 +24,7 @@ public class BuildClassDynamically {
 
 		StringBuilder sb = new StringBuilder();
 
-//		sb.append("package gen;");
+		// sb.append("package gen;");
 
 		sb.append("import java.util.List;");
 
@@ -55,7 +55,7 @@ public class BuildClassDynamically {
 
 		String code = sb.toString();
 
-		File f = new File("/tmp/"+CLASS_NAME + ".java");
+		File f = new File("/tmp/" + CLASS_NAME + ".java");
 		FileOutputStream fileOutputStream = new FileOutputStream(f);
 		IOUtils.write(code, fileOutputStream);
 		fileOutputStream.close();
@@ -77,12 +77,10 @@ public class BuildClassDynamically {
 
 		System.out.println(compilationUnits.iterator().next().toUri().toURL());
 
-		URLClassLoader sysloader = new URLClassLoader(new URL[] { new File("/tmp/").toURI().toURL() }, BuildClassDynamically.class.getClassLoader());
-		
-		URL[] urls = sysloader.getURLs();
-		
-		
-		
+		URLClassLoader sysloader = new URLClassLoader(new URL[] { new File("/tmp/").toURI().toURL() },
+				BuildClassDynamically.class.getClassLoader());
+
+		// URL[] urls = sysloader.getURLs();
 		// Class<?> classToLoad = Class.forName ("Foo", true, child);
 		// Method method = classToLoad.getDeclaredMethod ("toString");
 		// Object instance = classToLoad.newInstance();
@@ -91,8 +89,6 @@ public class BuildClassDynamically {
 		// URLClassLoader sysloader = (URLClassLoader) ClassLoader.getSystemClassLoader();
 		Class<?> sysclass = URLClassLoader.class;
 
-		
-		
 		Method method = sysclass.getDeclaredMethod("addURL", new Class[] { URL.class });
 		method.setAccessible(true);
 		method.invoke(sysloader, new Object[] { f.toURI().toURL() });
@@ -106,8 +102,8 @@ public class BuildClassDynamically {
 
 		System.out.println(result);
 
-		//f.delete();
-		//new File(CLASS_NAME+".class").delete();
+		// f.delete();
+		// new File(CLASS_NAME+".class").delete();
 
 	}
 }
