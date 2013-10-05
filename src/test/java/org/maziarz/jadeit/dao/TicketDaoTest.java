@@ -1,5 +1,7 @@
 package org.maziarz.jadeit.dao;
 
+import java.util.Collections;
+
 import javax.annotation.Resource;
 
 import junit.framework.Assert;
@@ -29,14 +31,33 @@ public class TicketDaoTest extends BaseDaoTest {
 
 		Requirement r = new Requirement();
 		r.setName("Req1");
-
 		rdao.save(r);
 
-		r.setDescrition("Desc");
+		t2.setRequirements(Collections.singletonList(r));
+		
+		dao.save(t2);
+		
+		em.flush();
+		em.clear();
+		
+		Ticket loadedTicket = dao.load(id);
+		
+		Assert.assertTrue(t2 != loadedTicket);
+		Assert.assertEquals(t2, loadedTicket);
 
-		rdao.save(r);
-
-		System.out.println(r.getId());
-
+		Requirement req = loadedTicket.getRequirements().iterator().next();
+		Assert.assertNull(req.getDescription());
+		req.setDescription("Desc");
+		
+		rdao.save(req);
+		
+		em.flush();
+		em.clear();
+		
+		Requirement loadedRequirement = rdao.load(id);
+		Assert.assertEquals("Req1", loadedRequirement.getName());
+		Assert.assertEquals("Desc", loadedRequirement.getDescription());
+		
+		
 	}
 }

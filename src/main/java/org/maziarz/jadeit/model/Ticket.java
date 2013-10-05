@@ -13,16 +13,11 @@ import org.slf4j.LoggerFactory;
 @Entity
 public class Ticket extends BaseObject {
 
-	@Enumerated(EnumType.ORDINAL)
 	private Priority priority;
 
-	@Enumerated(EnumType.STRING)
 	private Status status;
-
-	@ManyToMany(mappedBy = "ticket")
-	private Collection<Requirement> requirement;
-
-	// private Collection<TicketRequirementRelation> requirements = new ArrayList<TicketRequirementRelation>(4);
+	
+	private Collection<Requirement> requirements;
 
 	public enum Priority {
 		CRITICAL, HIGH, NORMAL, LOW
@@ -46,6 +41,7 @@ public class Ticket extends BaseObject {
 
 	}
 
+	@Enumerated(EnumType.ORDINAL)
 	public Priority getPriority() {
 		return priority;
 	}
@@ -54,6 +50,7 @@ public class Ticket extends BaseObject {
 		this.priority = priority;
 	}
 
+	@Enumerated(EnumType.STRING)
 	public Status getStatus() {
 		return status;
 	}
@@ -61,4 +58,15 @@ public class Ticket extends BaseObject {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+
+	public void setRequirements(Collection<Requirement> r) {
+		this.requirements = r;
+	}
+	
+	@ManyToMany
+	public Collection<Requirement> getRequirements() {
+		return requirements;
+	}
+	
+	
 }
