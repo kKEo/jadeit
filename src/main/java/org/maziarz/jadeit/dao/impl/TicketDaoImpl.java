@@ -12,8 +12,8 @@ public class TicketDaoImpl extends BaseDaoImpl<Ticket> implements TicketDao {
 	@Override
 	public Ticket loadByTitle(String title) {
 
-		throw new RuntimeException("Not implemented");
-
+		return null;
+		
 		// return (Ticket) sessionFactory.getCurrentSession().createCriteria(Ticket.class).add(Restrictions.eq("title",
 		// title)).uniqueResult();
 	}

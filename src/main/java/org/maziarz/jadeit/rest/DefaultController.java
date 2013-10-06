@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/project")
-public class ProjectController {
+@RequestMapping("/")
+public class DefaultController {
 
 	@Autowired
 	ProjectDao dao;
@@ -19,6 +19,9 @@ public class ProjectController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Project getProjectById(@PathVariable Long id) {
-		return dao.load(id);
+		final Project project = new Project();
+		project.setName("BB_" + id);
+		project.setDescription("Desc");
+		return project;
 	}
 }

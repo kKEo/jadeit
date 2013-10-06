@@ -20,7 +20,7 @@ public class HomePage extends WebPage {
 		ticketDao.save(ticket);
 
 		String title = "Undefined";
-		title = ticketDao.loadByTitle("test").getName();
+		title = ticketDao.load(1L).getName();
 
 		add(new Label("ticket", title));
 

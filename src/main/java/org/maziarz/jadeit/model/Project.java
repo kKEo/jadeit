@@ -9,10 +9,8 @@ import javax.persistence.TemporalType;
 @Entity
 public class Project extends BaseObject {
 
-	@Temporal(value = TemporalType.DATE)
 	private Date startDate;
 
-	@Temporal(value = TemporalType.DATE)
 	private Date endDate;
 
 	@Temporal(value = TemporalType.DATE)
@@ -25,12 +23,12 @@ public class Project extends BaseObject {
 	}
 
 	@Temporal(value = TemporalType.DATE)
-	public Date EndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setExitDate(Date exitDate) {
-		this.endDate = exitDate;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 }
