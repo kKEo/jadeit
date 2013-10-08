@@ -1,14 +1,13 @@
 package org.maziarz.jadeit.model;
 
 import java.util.Collection;
+import java.util.HashSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.ManyToMany;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Ticket extends BaseObject {
@@ -17,7 +16,7 @@ public class Ticket extends BaseObject {
 
 	private Status status;
 	
-	private Collection<Requirement> requirements;
+	private Collection<TicketRequirementRelation> requirements = new HashSet<TicketRequirementRelation>();
 
 	public enum Priority {
 		CRITICAL, HIGH, NORMAL, LOW
@@ -27,7 +26,7 @@ public class Ticket extends BaseObject {
 		READY, INPROGRESS, NEW, SUSPENDED, CLOSED
 	}
 
-	private static Logger logger = LoggerFactory.getLogger(Ticket.class);
+	//private static Logger logger = LoggerFactory.getLogger(Ticket.class);
 
 	public Ticket(String name, String description, Priority priority) {
 		this.setName(name);
@@ -59,12 +58,12 @@ public class Ticket extends BaseObject {
 		this.status = status;
 	}
 
-	public void setRequirements(Collection<Requirement> r) {
+	public void setRequirements(Collection<TicketRequirementRelation> r) {
 		this.requirements = r;
 	}
 	
-	@ManyToMany
-	public Collection<Requirement> getRequirements() {
+	@OneToMany (mappedBy = "pk.ticket", cascade=CascadeType.ALL)
+	public Collection<TicketRequirementRelation> getRequirements() {
 		return requirements;
 	}
 	

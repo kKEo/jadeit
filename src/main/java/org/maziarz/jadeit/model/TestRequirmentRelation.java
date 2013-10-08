@@ -4,6 +4,5 @@ public class TestRequirmentRelation {
 
 	private Test test;
 	private Requirement ticket;
-	private ERelationType relation;
 
 }

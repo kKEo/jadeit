@@ -1,6 +1,6 @@
 package org.maziarz.jadeit.dao;
 
-import java.util.Collections;
+import java.util.Date;
 
 import javax.annotation.Resource;
 
@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.maziarz.jadeit.model.Requirement;
 import org.maziarz.jadeit.model.Ticket;
 import org.maziarz.jadeit.model.Ticket.Priority;
+import org.maziarz.jadeit.model.TicketRequirementRelation;
 
 public class TicketDaoTest extends BaseDaoTest {
 
@@ -33,7 +34,14 @@ public class TicketDaoTest extends BaseDaoTest {
 		r.setName("Req1");
 		rdao.save(r);
 
-		t2.setRequirements(Collections.singletonList(r));
+		
+		TicketRequirementRelation trr = new TicketRequirementRelation();
+		trr.setTicket(t2);
+		trr.setRequirement(r);
+		trr.setCreatedDate(new Date());
+		
+		t2.getRequirements().add(trr);
+		
 		
 		dao.save(t2);
 		
@@ -45,11 +53,11 @@ public class TicketDaoTest extends BaseDaoTest {
 		Assert.assertTrue(t2 != loadedTicket);
 		Assert.assertEquals(t2, loadedTicket);
 
-		Requirement req = loadedTicket.getRequirements().iterator().next();
-		Assert.assertNull(req.getDescription());
-		req.setDescription("Desc");
+		TicketRequirementRelation req = loadedTicket.getRequirements().iterator().next();
+		Assert.assertNull(req.getRequirement().getDescription());
+		req.getRequirement().setDescription("Desc");
 		
-		rdao.save(req);
+		rdao.save(req.getRequirement());
 		
 		em.flush();
 		em.clear();
