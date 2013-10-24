@@ -1,0 +1,18 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:extend>
+
+	<div style="padding: 10px; margin: 5px; background: #dedede; border: 1px solid #cecece;">
+		<h3 style="color: #aeaeae;">Add new requirement</h3>
+	    <hr style="color: #cecece;"/>
+		<form wicket:id="createUpdateForm">
+			<wicket:enclosure>
+			Id: <span wicket:id="idLabel"></span> <br/>
+			</wicket:enclosure>
+			Name: <input wicket:id="nameTextField" style="width: 542px;"/>
+			 <br/>Description: <br/><textarea wicket:id="descriptionTextArea" style="width: 945px; height: 300px;"></textarea>
+			<br/><input type="submit" value="Dodaj"/> 
+		</form>
+	</div>
+
+</wicket:extend>
+</html>

@@ -1,0 +1,46 @@
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:extend>
+
+	<style type="text/css">
+		
+		.title {
+			width: 162px; float:left; height: 100px;
+		}
+		
+		.rows {
+			margin: 0px; padding: 5px; display: inline-block; 
+		}
+		
+		.item {
+			width: 186px; height: 50px; float: left; padding: 3px; border: 1px solid #efefef;
+		}
+	
+		.first, .prev, .next, .last {
+			font-size: x-small;
+		}
+		
+		#paginator a{
+			font-size: small;
+			text-decoration: none;
+		}
+	
+	</style>
+
+	<div class="title"> 
+	<h3 >Requirements</h3>
+	<ul>
+		<li><a href="r">Add (+)</a></li>
+	</ul>
+	</div>
+	<div wicket:id="paginator" id="paginator"></div>
+	<div wicket:id="rows" class="rows">
+	<div class="item">
+		<div>
+			<span wicket:id="id"></span> - <span wicket:id="name"></span>
+		</div>
+		<a href="" wicket:id="edit">edit</a>
+	</div>
+	</div>
+
+</wicket:extend>
+</html>

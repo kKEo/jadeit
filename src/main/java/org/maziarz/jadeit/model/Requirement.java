@@ -13,6 +13,8 @@ import org.maziarz.jadeit.model.RequirementRequirementRelation.RelationType;
 @Entity
 public class Requirement extends BaseObject {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Collection<TicketRequirementRelation> tickets = new HashSet<TicketRequirementRelation>(); 
 	
 	@OneToMany(mappedBy = "pk.requirement")

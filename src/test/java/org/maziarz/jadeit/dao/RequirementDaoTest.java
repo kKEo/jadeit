@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import org.junit.Assert;
 import org.junit.Test;
 import org.maziarz.jadeit.model.Requirement;
-import org.maziarz.jadeit.model.RequirementRequirementRelation;
 import org.maziarz.jadeit.model.RequirementRequirementRelation.RelationType;
 
 public class RequirementDaoTest extends BaseDaoTest {

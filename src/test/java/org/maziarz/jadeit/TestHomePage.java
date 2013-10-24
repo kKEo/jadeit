@@ -3,8 +3,8 @@ package org.maziarz.jadeit;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
-import org.maziarz.jadeit.HomePage;
-import org.maziarz.jadeit.WicketApplication;
+import org.maziarz.jadeit.webapp.BasePage;
+import org.maziarz.jadeit.webapp.WicketApplication;
 
 /**
  * Simple test using the WicketTester
@@ -23,9 +23,9 @@ public class TestHomePage
 	public void homepageRendersSuccessfully()
 	{
 		//start and render the test page
-		tester.startPage(HomePage.class);
+		tester.startPage(BasePage.class);
 
 		//assert rendered page class
-		tester.assertRenderedPage(HomePage.class);
+		tester.assertRenderedPage(BasePage.class);
 	}
 }

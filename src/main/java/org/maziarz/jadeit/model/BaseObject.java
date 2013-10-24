@@ -1,12 +1,15 @@
 package org.maziarz.jadeit.model;
 
+import java.io.Serializable;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseObject {
+public abstract class BaseObject implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
 	private String description;

@@ -3,6 +3,7 @@
   <classpathentry kind="src" path="src/test/resources" output="target/test-classes" excluding="**/*.java"/>
   <classpathentry kind="src" path="src/main/java"/>
   <classpathentry kind="src" path="src/gen/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/webapp/WEB-INF" including="**/*.java"/>
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="var" path="M2_REPO/javax/activation/activation/1.1/activation-1.1.jar" sourcepath="M2_REPO/javax/activation/activation/1.1/activation-1.1-sources.jar"/>
@@ -170,10 +171,30 @@
       <attribute value="jar:file:/home/krma/.m2/repository/org/springframework/spring-webmvc/3.2.4.RELEASE/spring-webmvc-3.2.4.RELEASE-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-core/6.5.0/wicket-core-6.5.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-ioc/6.5.0/wicket-ioc-6.5.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-request/6.5.0/wicket-request-6.5.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-spring/6.5.0/wicket-spring-6.5.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-util/6.5.0/wicket-util-6.5.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-core/6.11.0/wicket-core-6.11.0.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-core/6.11.0/wicket-core-6.11.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/krma/.m2/repository/org/apache/wicket/wicket-core/6.11.0/wicket-core-6.11.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-ioc/6.11.0/wicket-ioc-6.11.0.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-ioc/6.11.0/wicket-ioc-6.11.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/krma/.m2/repository/org/apache/wicket/wicket-ioc/6.11.0/wicket-ioc-6.11.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-request/6.11.0/wicket-request-6.11.0.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-request/6.11.0/wicket-request-6.11.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/krma/.m2/repository/org/apache/wicket/wicket-request/6.11.0/wicket-request-6.11.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-spring/6.11.0/wicket-spring-6.11.0.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-spring/6.11.0/wicket-spring-6.11.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/krma/.m2/repository/org/apache/wicket/wicket-spring/6.11.0/wicket-spring-6.11.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/wicket/wicket-util/6.11.0/wicket-util-6.11.0.jar" sourcepath="M2_REPO/org/apache/wicket/wicket-util/6.11.0/wicket-util-6.11.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/krma/.m2/repository/org/apache/wicket/wicket-util/6.11.0/wicket-util-6.11.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 </classpath>
